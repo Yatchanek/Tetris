@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5lcw00b088kv"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_bnuca"]
+[ext_resource type="Script" path="res://scripts/7_bag_generator.gd" id="2_mn80y"]
+[ext_resource type="Texture2D" uid="uid://cdyxp3nii5xj1" path="res://resources/border.png" id="3_txkfd"]
+[ext_resource type="FontFile" uid="uid://b7h4fbeevjmta" path="res://resources/Teko-Bold.ttf" id="4_ucfe5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hmmun"]
+font = ExtResource("4_ucfe5")
+font_size = 32
+
+[node name="Game" type="Node"]
+script = ExtResource("1_bnuca")
+
+[node name="SevenBagGenerator" type="Node" parent="."]
+script = ExtResource("2_mn80y")
+
+[node name="BoardArea" type="Node2D" parent="."]
+z_index = 5
+position = Vector2(480, 64)
+
+[node name="ColorRect" type="ColorRect" parent="BoardArea"]
+z_index = -2
+custom_minimum_size = Vector2(320, 640)
+offset_right = 320.0
+offset_bottom = 640.0
+color = Color(0.054902, 0.054902, 0.054902, 1)
+
+[node name="Border" type="TextureRect" parent="BoardArea"]
+z_index = 2
+offset_left = -10.0
+offset_top = -130.0
+offset_right = 330.0
+offset_bottom = 650.0
+texture = ExtResource("3_txkfd")
+stretch_mode = 2
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="Hud"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Hud/MarginContainer"]
+layout_mode = 2
+
+[node name="LinesLabel" type="Label" parent="Hud/MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Lines cleared : "
+label_settings = SubResource("LabelSettings_hmmun")
+
+[node name="ScoreLabel" type="Label" parent="Hud/MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Score:"
+label_settings = SubResource("LabelSettings_hmmun")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Hud"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -420.0
+offset_bottom = 55.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+
+[node name="LinesLabel" type="Label" parent="Hud/MarginContainer2"]
+texture_filter = 1
+layout_mode = 2
+text = "Next:"
+label_settings = SubResource("LabelSettings_hmmun")
