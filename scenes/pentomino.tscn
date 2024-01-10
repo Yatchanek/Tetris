@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcuo4u8gxyabh"]
+
+[ext_resource type="Script" path="res://scripts/pentomino.gd" id="1_0xtlp"]
+
+[node name="Pentomino" type="Node2D"]
+script = ExtResource("1_0xtlp")

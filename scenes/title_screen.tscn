@@ -1,0 +1,677 @@
+[gd_scene load_steps=20 format=3 uid="uid://cmtgfilht4sps"]
+
+[ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_ma2ip"]
+[ext_resource type="FontFile" uid="uid://b7h4fbeevjmta" path="res://resources/Teko-Bold.ttf" id="2_mayx6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rvofe"]
+font = ExtResource("2_mayx6")
+font_size = 160
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8rn3"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_tckbu"]
+font = ExtResource("2_mayx6")
+font_size = 42
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_r2ae3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cuk8e"]
+font = ExtResource("2_mayx6")
+font_size = 36
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_axnoh"]
+draw_center = false
+border_width_bottom = 14
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d50m6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r8w8t"]
+font = ExtResource("2_mayx6")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_sd24g"]
+font = ExtResource("2_mayx6")
+
+[sub_resource type="LabelSettings" id="LabelSettings_b4ugd"]
+font = ExtResource("2_mayx6")
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3nhj"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_476w4"]
+bg_color = Color(0.470588, 0.470588, 0.470588, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y10xt"]
+bg_color = Color(0.470588, 0.470588, 0.470588, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nd6le"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ceehu"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+draw_center = false
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kk4r"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mpplr"]
+draw_center = false
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ma2ip")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[node name="RainbowTitle" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 230.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("2_mayx6")
+theme_override_font_sizes/normal_font_size = 160
+bbcode_enabled = true
+fit_content = true
+
+[node name="TittleLetters" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -200.0
+offset_bottom = 30.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="TittleLetters"]
+layout_mode = 2
+text = "B"
+label_settings = SubResource("LabelSettings_rvofe")
+
+[node name="Label2" type="Label" parent="TittleLetters"]
+layout_mode = 2
+text = "l"
+label_settings = SubResource("LabelSettings_rvofe")
+
+[node name="Label3" type="Label" parent="TittleLetters"]
+layout_mode = 2
+text = "o"
+label_settings = SubResource("LabelSettings_rvofe")
+
+[node name="Label4" type="Label" parent="TittleLetters"]
+layout_mode = 2
+text = "c"
+label_settings = SubResource("LabelSettings_rvofe")
+
+[node name="Label5" type="Label" parent="TittleLetters"]
+layout_mode = 2
+text = "k"
+label_settings = SubResource("LabelSettings_rvofe")
+
+[node name="Label6" type="Label" parent="TittleLetters"]
+layout_mode = 2
+text = " "
+label_settings = SubResource("LabelSettings_rvofe")
+
+[node name="Label7" type="Label" parent="TittleLetters"]
+layout_mode = 2
+text = "M"
+label_settings = SubResource("LabelSettings_rvofe")
+
+[node name="Label8" type="Label" parent="TittleLetters"]
+layout_mode = 2
+text = "a"
+label_settings = SubResource("LabelSettings_rvofe")
+
+[node name="Label9" type="Label" parent="TittleLetters"]
+layout_mode = 2
+text = "y"
+label_settings = SubResource("LabelSettings_rvofe")
+
+[node name="Label10" type="Label" parent="TittleLetters"]
+layout_mode = 2
+text = "h"
+label_settings = SubResource("LabelSettings_rvofe")
+
+[node name="Label11" type="Label" parent="TittleLetters"]
+layout_mode = 2
+text = "e"
+label_settings = SubResource("LabelSettings_rvofe")
+
+[node name="Label12" type="Label" parent="TittleLetters"]
+layout_mode = 2
+text = "m"
+label_settings = SubResource("LabelSettings_rvofe")
+
+[node name="InfoPanel" type="Panel" parent="."]
+visible = false
+clip_contents = true
+custom_minimum_size = Vector2(700, 450)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -147.0
+offset_right = 589.0
+offset_bottom = 303.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b8rn3")
+
+[node name="Carousel" type="HBoxContainer" parent="InfoPanel"]
+clip_contents = true
+layout_mode = 2
+offset_left = -700.0
+offset_right = 603.0
+offset_bottom = 454.0
+
+[node name="OptionsData" type="MarginContainer" parent="InfoPanel/Carousel"]
+custom_minimum_size = Vector2(700, 450)
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Options" type="VBoxContainer" parent="InfoPanel/Carousel/OptionsData"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="GameModeOption" type="HBoxContainer" parent="InfoPanel/Carousel/OptionsData/Options"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="InfoPanel/Carousel/OptionsData/Options/GameModeOption"]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+text = "Game mode:"
+label_settings = SubResource("LabelSettings_tckbu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoPanel/Carousel/OptionsData/Options/GameModeOption"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TetrisCheckBox" type="CheckBox" parent="InfoPanel/Carousel/OptionsData/Options/GameModeOption/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_mayx6")
+theme_override_font_sizes/font_size = 36
+button_group = SubResource("ButtonGroup_r2ae3")
+text = "Tetris"
+
+[node name="PentrisCheckBox" type="CheckBox" parent="InfoPanel/Carousel/OptionsData/Options/GameModeOption/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_mayx6")
+theme_override_font_sizes/font_size = 36
+button_group = SubResource("ButtonGroup_r2ae3")
+text = "Pentris"
+
+[node name="GarbageRowsOption" type="HBoxContainer" parent="InfoPanel/Carousel/OptionsData/Options"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="GarbageRowsLabel" type="Label" parent="InfoPanel/Carousel/OptionsData/Options/GarbageRowsOption"]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+text = "Garbage rows:"
+label_settings = SubResource("LabelSettings_tckbu")
+
+[node name="GarbageRows" type="HBoxContainer" parent="InfoPanel/Carousel/OptionsData/Options/GarbageRowsOption"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="0" type="Label" parent="InfoPanel/Carousel/OptionsData/Options/GarbageRowsOption/GarbageRows"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_cuk8e")
+
+[node name="GarbageRowsSlider" type="HSlider" parent="InfoPanel/Carousel/OptionsData/Options/GarbageRowsOption/GarbageRows"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_constants/center_grabber = 1
+theme_override_styles/slider = SubResource("StyleBoxFlat_axnoh")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_d50m6")
+max_value = 10.0
+value = 5.0
+allow_greater = true
+allow_lesser = true
+editable = false
+scrollable = false
+tick_count = 11
+ticks_on_borders = true
+
+[node name="10" type="Label" parent="InfoPanel/Carousel/OptionsData/Options/GarbageRowsOption/GarbageRows"]
+layout_mode = 2
+text = "10	"
+label_settings = SubResource("LabelSettings_cuk8e")
+
+[node name="GhostPieceOption" type="VBoxContainer" parent="InfoPanel/Carousel/OptionsData/Options"]
+layout_mode = 2
+theme_override_constants/separation = -14
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoPanel/Carousel/OptionsData/Options/GhostPieceOption"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="InfoPanel/Carousel/OptionsData/Options/GhostPieceOption/HBoxContainer"]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+text = "Ghost piece: "
+label_settings = SubResource("LabelSettings_tckbu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoPanel/Carousel/OptionsData/Options/GhostPieceOption/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InfoPanel/Carousel/OptionsData/Options/GhostPieceOption/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Off"
+label_settings = SubResource("LabelSettings_r8w8t")
+
+[node name="GhostPieceButton" type="CheckButton" parent="InfoPanel/Carousel/OptionsData/Options/GhostPieceOption/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
+button_pressed = true
+
+[node name="Label2" type="Label" parent="InfoPanel/Carousel/OptionsData/Options/GhostPieceOption/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "On"
+label_settings = SubResource("LabelSettings_r8w8t")
+
+[node name="Label2" type="Label" parent="InfoPanel/Carousel/OptionsData/Options/GhostPieceOption"]
+layout_mode = 2
+text = "Can be toggled by pressing 'G'"
+label_settings = SubResource("LabelSettings_sd24g")
+
+[node name="HardcoreModeOption" type="VBoxContainer" parent="InfoPanel/Carousel/OptionsData/Options"]
+layout_mode = 2
+theme_override_constants/separation = -14
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoPanel/Carousel/OptionsData/Options/HardcoreModeOption"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="InfoPanel/Carousel/OptionsData/Options/HardcoreModeOption/HBoxContainer"]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+text = "Hardcore mode: "
+label_settings = SubResource("LabelSettings_tckbu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoPanel/Carousel/OptionsData/Options/HardcoreModeOption/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InfoPanel/Carousel/OptionsData/Options/HardcoreModeOption/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Off"
+label_settings = SubResource("LabelSettings_r8w8t")
+
+[node name="HardcoreModeButton" type="CheckButton" parent="InfoPanel/Carousel/OptionsData/Options/HardcoreModeOption/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
+button_pressed = true
+
+[node name="Label3" type="Label" parent="InfoPanel/Carousel/OptionsData/Options/HardcoreModeOption/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "On"
+label_settings = SubResource("LabelSettings_r8w8t")
+
+[node name="Label2" type="Label" parent="InfoPanel/Carousel/OptionsData/Options/HardcoreModeOption"]
+layout_mode = 2
+text = "Ghost piece is always turned off
+A random row will be scrambled every now and then"
+label_settings = SubResource("LabelSettings_sd24g")
+
+[node name="InfoData" type="MarginContainer" parent="InfoPanel/Carousel"]
+custom_minimum_size = Vector2(700, 450)
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoPanel/Carousel/InfoData"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoPanel/Carousel/InfoData/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="InfoPanel/Carousel/InfoData/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Left Arrow"
+label_settings = SubResource("LabelSettings_b4ugd")
+
+[node name="Label2" type="Label" parent="InfoPanel/Carousel/InfoData/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "move left"
+label_settings = SubResource("LabelSettings_b4ugd")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="InfoPanel/Carousel/InfoData/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="InfoPanel/Carousel/InfoData/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Right Arrow"
+label_settings = SubResource("LabelSettings_b4ugd")
+
+[node name="Label2" type="Label" parent="InfoPanel/Carousel/InfoData/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "move right"
+label_settings = SubResource("LabelSettings_b4ugd")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="InfoPanel/Carousel/InfoData/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="InfoPanel/Carousel/InfoData/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Up Arrow"
+label_settings = SubResource("LabelSettings_b4ugd")
+
+[node name="Label2" type="Label" parent="InfoPanel/Carousel/InfoData/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "rotate clockwise"
+label_settings = SubResource("LabelSettings_b4ugd")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="InfoPanel/Carousel/InfoData/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="InfoPanel/Carousel/InfoData/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Z"
+label_settings = SubResource("LabelSettings_b4ugd")
+
+[node name="Label2" type="Label" parent="InfoPanel/Carousel/InfoData/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "rotate anticlockwise"
+label_settings = SubResource("LabelSettings_b4ugd")
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="InfoPanel/Carousel/InfoData/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="InfoPanel/Carousel/InfoData/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Down Arrow"
+label_settings = SubResource("LabelSettings_b4ugd")
+
+[node name="Label2" type="Label" parent="InfoPanel/Carousel/InfoData/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "soft drop"
+label_settings = SubResource("LabelSettings_b4ugd")
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="InfoPanel/Carousel/InfoData/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="InfoPanel/Carousel/InfoData/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Space"
+label_settings = SubResource("LabelSettings_b4ugd")
+
+[node name="Label2" type="Label" parent="InfoPanel/Carousel/InfoData/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "hard drop"
+label_settings = SubResource("LabelSettings_b4ugd")
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="InfoPanel/Carousel/InfoData/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="InfoPanel/Carousel/InfoData/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ESC"
+label_settings = SubResource("LabelSettings_b4ugd")
+
+[node name="Label2" type="Label" parent="InfoPanel/Carousel/InfoData/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "quit to menu"
+label_settings = SubResource("LabelSettings_b4ugd")
+
+[node name="InfoCloseButton" type="Button" parent="InfoPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -65.0
+offset_right = 36.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_pressed_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+theme_override_colors/font_hover_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("2_mayx6")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_d3nhj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_476w4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y10xt")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_nd6le")
+text = "Close"
+
+[node name="StartGameButton" type="Button" parent="." groups=["MenuButtons"]]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1040.0
+offset_top = -420.0
+offset_right = -763.0
+offset_bottom = -327.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.509804, 0.509804, 0.509804, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.509804, 0.509804, 0.509804, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_mayx6")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_ceehu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0kk4r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mpplr")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ceehu")
+text = "Start Game"
+alignment = 0
+
+[node name="OptionsButton" type="Button" parent="." groups=["MenuButtons"]]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1040.0
+offset_top = -320.0
+offset_right = -763.0
+offset_bottom = -227.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.509804, 0.509804, 0.509804, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.509804, 0.509804, 0.509804, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_mayx6")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_ceehu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0kk4r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mpplr")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ceehu")
+text = "Options"
+alignment = 0
+
+[node name="InfoButton" type="Button" parent="." groups=["MenuButtons"]]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1040.0
+offset_top = -220.0
+offset_right = -717.0
+offset_bottom = -127.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.509804, 0.509804, 0.509804, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.509804, 0.509804, 0.509804, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_mayx6")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_ceehu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0kk4r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mpplr")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ceehu")
+text = "How to play?"
+alignment = 0
+
+[node name="QuitButton" type="Button" parent="." groups=["MenuButtons"]]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1040.0
+offset_top = -120.0
+offset_right = -763.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.509804, 0.509804, 0.509804, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.509804, 0.509804, 0.509804, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_mayx6")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_ceehu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0kk4r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mpplr")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ceehu")
+text = "Quit Game"
+alignment = 0
+
+[connection signal="toggled" from="InfoPanel/Carousel/OptionsData/Options/GameModeOption/HBoxContainer/TetrisCheckBox" to="." method="_on_tetris_check_box_toggled"]
+[connection signal="toggled" from="InfoPanel/Carousel/OptionsData/Options/GameModeOption/HBoxContainer/PentrisCheckBox" to="." method="_on_pentris_check_box_toggled"]
+[connection signal="value_changed" from="InfoPanel/Carousel/OptionsData/Options/GarbageRowsOption/GarbageRows/GarbageRowsSlider" to="." method="_on_garbage_rows_value_changed"]
+[connection signal="toggled" from="InfoPanel/Carousel/OptionsData/Options/GhostPieceOption/HBoxContainer/HBoxContainer/GhostPieceButton" to="." method="_on_ghost_piece_button_toggled"]
+[connection signal="toggled" from="InfoPanel/Carousel/OptionsData/Options/HardcoreModeOption/HBoxContainer/HBoxContainer/HardcoreModeButton" to="." method="_on_hardcore_mode_button_toggled"]
+[connection signal="pressed" from="InfoPanel/InfoCloseButton" to="." method="_on_info_close_button_pressed"]
+[connection signal="pressed" from="StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="InfoButton" to="." method="_on_info_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
