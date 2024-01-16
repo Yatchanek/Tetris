@@ -3,6 +3,7 @@ extends Node
 const tetromino_scene = preload("res://scenes/tetromino.tscn")
 const pentomino_scene = preload("res://scenes/pentomino.tscn")
 const tile_scene = preload("res://scenes/tile.tscn")
+const pentris_tile_scene = preload("res://scenes/pentris_tile.tscn")
 
 @onready var board_area: Node2D = $BoardAndContainers/BoardArea
 @onready var generator: SevenBagGenerator = $BagGenerator
@@ -331,11 +332,16 @@ func fill_row_with_garbage(row : int):
 	numbers.shuffle()
 	
 	clear_row(row)
-	
-	for i in range(numbers.size() * 0.5):
+
+	for i in randi_range(floor(Globals.COLS[Globals.game_mode] * 0.4), ceil(Globals.COLS[Globals.game_mode] * 0.6)):
 		var col = numbers.pop_back()
-		var tile = tile_scene.instantiate() as Sprite2D
-		tile.region_rect.position.x = randi() % 7 * Globals.CELL_SIZE[Globals.game_mode]
+		var tile : Sprite2D
+		if Globals.game_mode == Globals.GameMode.TETRIS:
+			tile = tile_scene.instantiate() as Sprite2D
+			tile.modulate = Globals.tetris_colors[Globals.tetris_colors.keys().pick_random()]
+		else:
+			tile = pentris_tile_scene.instantiate() as Sprite2D
+			tile.modulate = Globals.pentomino_colors[Globals.pentomino_colors.keys().pick_random()]
 		board[row][col] = tile
 		tile.position = Vector2(col, row) * Globals.CELL_SIZE[Globals.game_mode]
 		board_area.add_child(tile)

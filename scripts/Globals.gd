@@ -170,7 +170,7 @@ var high_score : Dictionary = {
 	GameMode.PENTRIS : 0
 }
 
-var game_mode : GameMode = GameMode.PENTRIS
+var game_mode : GameMode = GameMode.TETRIS
 var garbage_rows : int = 0
 var spawn_ghost_piece : bool = true
 var hardcore_mode : bool = false
