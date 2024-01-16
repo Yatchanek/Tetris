@@ -1,21 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://dj6cx6ba8wqtd"]
 
-[ext_resource type="Texture2D" uid="uid://ddqloi5ie1d22" path="res://resources/pieces.png" id="1_atsl8"]
-
-[sub_resource type="GDScript" id="GDScript_c5frs"]
-script/source = "extends Sprite2D
-
-func destroy():
-	var tw : Tween = create_tween()
-	tw.finished.connect(queue_free)
-	tw.set_loops(3)
-	tw.tween_property(self, \"self_modulate\", Color(5, 5, 5, 1), 0.05)
-	tw.tween_property(self, \"self_modulate\", Color.WHITE, 0.05)
-"
+[ext_resource type="Texture2D" uid="uid://c6varvflqd5sf" path="res://resources/tetris_tile.png" id="1_12aoi"]
+[ext_resource type="Script" path="res://scripts/tile.gd" id="2_uj5h3"]
 
 [node name="Tile" type="Sprite2D"]
-texture = ExtResource("1_atsl8")
+modulate = Color(1, 0.341176, 0.580392, 1)
+texture_filter = 1
+texture = ExtResource("1_12aoi")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
-script = SubResource("GDScript_c5frs")
+script = ExtResource("2_uj5h3")

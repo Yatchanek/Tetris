@@ -8,15 +8,15 @@ var tile_scene : PackedScene = preload("res://scenes/pentris_tile.tscn")
 func _ready() -> void:
 	tile_data = Globals.pentomino_shapes[piece_type]
 	spawn_coords = Vector2i(5, -1)
-	ghost_tile_index = 18
 	for point in tile_data:
 		var tile = tile_scene.instantiate() as Sprite2D
-		tile.region_rect.position.x = piece_type * Globals.CELL_SIZE[Globals.GameMode.PENTRIS]
+		tile.modulate = Globals.pentomino_colors[piece_type]
+		tile.region_rect.position.y = Globals.tile_design * Globals.CELL_SIZE[Globals.GameMode.PENTRIS]
 		tile.tree_exited.connect(_on_tile_removed.bind(tile))
 		tiles.append(tile)
 		if status == GHOST:
-			modulate.a = 0.5
-			tile.region_rect.position.x = 19 * Globals.CELL_SIZE[Globals.GameMode.PENTRIS]
+			tile.modulate = Color(0.6, 0.6, 0.6, 0.5)
+			tile.region_rect.position.x = Globals.CELL_SIZE[Globals.GameMode.PENTRIS]
 	
 		add_child(tile)
 	super()

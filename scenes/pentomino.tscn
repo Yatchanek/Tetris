@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://scripts/pentomino.gd" id="1_0xtlp"]
 
 [node name="Pentomino" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_0xtlp")

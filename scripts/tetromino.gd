@@ -10,12 +10,13 @@ func _ready() -> void:
 	spawn_coords = Vector2i(4, -1)
 	for point in tile_data:
 		var tile = tile_scene.instantiate() as Sprite2D
-		tile.region_rect.position.x = piece_type * Globals.CELL_SIZE[Globals.GameMode.TETRIS]
+		tile.region_rect.position.y = Globals.tile_design * Globals.CELL_SIZE[Globals.GameMode.TETRIS]
+		tile.modulate = Globals.tetris_colors[piece_type]
 		tile.tree_exited.connect(_on_tile_removed.bind(tile))
 		tiles.append(tile)
 		if status == GHOST:
-			modulate.a = 0.5
-			tile.region_rect.position.x = 7 * Globals.CELL_SIZE[Globals.GameMode.TETRIS]
+			tile.region_rect.position.x = Globals.CELL_SIZE[Globals.GameMode.TETRIS]
+			tile.modulate = Color(0.6, 0.6, 0.6, 0.5)
 		add_child(tile)
 	super()
 	

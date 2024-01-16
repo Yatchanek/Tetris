@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deimtq5yl3k1v"
-path="res://.godot/imported/pentris_pieces.png-0508e8d2bad9408b51199221eb209ce6.ctex"
+uid="uid://camso7dqpgw4b"
+path="res://.godot/imported/checkbutton_off.png-0156147743037d791ff94f79389207dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/pentris_pieces.png"
-dest_files=["res://.godot/imported/pentris_pieces.png-0508e8d2bad9408b51199221eb209ce6.ctex"]
+source_file="res://resources/checkbutton_off.png"
+dest_files=["res://.godot/imported/checkbutton_off.png-0156147743037d791ff94f79389207dd.ctex"]
 
 [params]
 

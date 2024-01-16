@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dho0vqq4ligia"]
+
+[ext_resource type="Texture2D" uid="uid://spt5acxv1vcr" path="res://resources/stars.png" id="1_p6aff"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qavob"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Gradient" id="Gradient_0p40y"]
+offsets = PackedFloat32Array(0, 0.219595, 0.402027, 0.621622, 0.837838, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0.219608, 0.556863, 0, 1, 0, 1, 0, 0, 1, 0.615686, 1, 0.633333, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e2tds"]
+gradient = SubResource("Gradient_0p40y")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m1dhj"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(640, 1, 1)
+angle_max = 720.0
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 9.8, 0)
+linear_accel_max = 50.0
+scale_min = 0.5
+scale_max = 0.75
+color_initial_ramp = SubResource("GradientTexture1D_e2tds")
+
+[node name="StarGenerator" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_qavob")
+amount = 48
+process_material = SubResource("ParticleProcessMaterial_m1dhj")
+texture = ExtResource("1_p6aff")
+lifetime = 7.0

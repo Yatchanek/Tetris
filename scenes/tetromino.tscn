@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://scripts/tetromino.gd" id="1_nwt6l"]
 
 [node name="Tetromino" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_nwt6l")

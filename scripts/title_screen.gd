@@ -2,17 +2,18 @@ extends Control
 
 @onready var title_letters: HBoxContainer = $TittleLetters
 @onready var rainbow_title: RichTextLabel = $RainbowTitle
-@onready var garbage_rows_slider: HSlider = $InfoPanel/Carousel/OptionsData/Options/GarbageRowsOption/GarbageRows/GarbageRowsSlider
-@onready var ghost_piece_button: CheckButton = $InfoPanel/Carousel/OptionsData/Options/GhostPieceOption/HBoxContainer/HBoxContainer/GhostPieceButton
-@onready var hardcore_mode_button: CheckButton = $InfoPanel/Carousel/OptionsData/Options/HardcoreModeOption/HBoxContainer/HBoxContainer/HardcoreModeButton
-@onready var info_panel: Panel = $InfoPanel
-@onready var tetris_check_box: CheckBox = $InfoPanel/Carousel/OptionsData/Options/GameModeOption/HBoxContainer/TetrisCheckBox
-@onready var pentris_check_box: CheckBox = $InfoPanel/Carousel/OptionsData/Options/GameModeOption/HBoxContainer/PentrisCheckBox
+@onready var garbage_rows_slider: HSlider = $MarginContainer/InfoPanel/Carousel/OptionsData/Options/GarbageRowsOption/GarbageRows/GarbageRowsSlider
+@onready var ghost_piece_button: CheckButton = $MarginContainer/InfoPanel/Carousel/OptionsData/Options/GhostPieceOption/HBoxContainer/HBoxContainer/GhostPieceButton
+@onready var hardcore_mode_button: CheckButton = $MarginContainer/InfoPanel/Carousel/OptionsData/Options/HardcoreModeOption/HBoxContainer/HBoxContainer/HardcoreModeButton
+@onready var info_panel: Panel = $MarginContainer/InfoPanel
+@onready var tetris_check_box: CheckBox = $MarginContainer/InfoPanel/Carousel/OptionsData/Options/GameModeOption/HBoxContainer/TetrisCheckBox
+@onready var pentris_check_box: CheckBox = $MarginContainer/InfoPanel/Carousel/OptionsData/Options/GameModeOption/HBoxContainer/PentrisCheckBox
 @onready var start_game_button: Button = $StartGameButton
 @onready var options_button: Button = $OptionsButton
 @onready var info_button: Button = $InfoButton
 @onready var quit_button: Button = $QuitButton
-@onready var carousel: HBoxContainer = $InfoPanel/Carousel
+@onready var carousel: HBoxContainer = $MarginContainer/InfoPanel/Carousel
+@onready var tile_texture: TextureRect = $MarginContainer/InfoPanel/Carousel/OptionsData/Options/GameModeOption2/HBoxContainer/TileTexture
 
 var menu_buttons : Array
 
@@ -22,8 +23,13 @@ func _ready() -> void:
 	hardcore_mode_button.button_pressed = Globals.hardcore_mode
 	tetris_check_box.button_pressed = Globals.game_mode == Globals.GameMode.TETRIS
 	pentris_check_box.button_pressed = Globals.game_mode == Globals.GameMode.PENTRIS
-	
+	tile_texture.texture.region.position.y = Globals.tile_design * 32
 	menu_buttons = get_tree().get_nodes_in_group("MenuButtons")
+	for button in menu_buttons:
+		button.mouse_entered.connect(_on_button_hovered.bind(button))
+		button.mouse_exited.connect(_on_button_unhovered.bind(button))
+	if OS.has_feature("web"):
+		quit_button.hide()
 	
 	for i in title_letters.get_children().size():
 		drop_letter(i)
@@ -31,14 +37,14 @@ func _ready() -> void:
 	
 
 func drop_letter(letter_number : int):
-	var tween : Tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+	var tween : Tween = create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
 	tween.tween_property(title_letters.get_child(letter_number), "position:y", 200.0, 0.3)
 	if letter_number == title_letters.get_child_count() - 1:
 		tween.finished.connect(_on_title_shown)
 
 func move_in_button(button: Button, button_idx : int):
 	var tw : Tween = create_tween().set_trans(Tween.TRANS_ELASTIC)
-	tw.tween_property(button, "position:x", 100 + button_idx * 50, 1.0)
+	tw.tween_property(button, "position:x", 50 + button_idx * 25, 1.0)
 	
 		
 func _on_title_shown():
@@ -76,13 +82,15 @@ func _on_start_game_button_pressed() -> void:
 func _on_info_button_pressed() -> void:
 	if !info_panel.visible:
 		info_panel.show()
-		carousel.position.x = -700
+		carousel.position.x = --630
 	else:
-		if carousel.position.x == -700:
+		if carousel.position.x == -630:
 			info_panel.hide()
 		else:
 			var tw : Tween = create_tween()
-			tw.tween_property(carousel, "position:x", -700, 0.15)
+			tw.set_trans(Tween.TRANS_CUBIC)
+			tw.set_ease(Tween.EASE_IN_OUT)
+			tw.tween_property(carousel, "position:x", -630, 0.15)
 			
 func _on_options_button_pressed() -> void:
 	if !info_panel.visible:
@@ -93,6 +101,8 @@ func _on_options_button_pressed() -> void:
 			info_panel.hide()
 		else:
 			var tw : Tween = create_tween()
+			tw.set_trans(Tween.TRANS_CUBIC)
+			tw.set_ease(Tween.EASE_IN_OUT)
 			tw.tween_property(carousel, "position:x", 0, 0.15)
 
 
@@ -119,4 +129,18 @@ func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
 
+func _on_previous_design_pressed() -> void:
+	Globals.tile_design = wrapi(Globals.tile_design - 1, 0, 3)
+	tile_texture.texture.region.position.y = Globals.tile_design * 32
+	
+func _on_next_design_pressed() -> void:
+	Globals.tile_design = wrapi(Globals.tile_design + 1, 0, 3)
+	tile_texture.texture.region.position.y = Globals.tile_design * 32
 
+func _on_button_hovered(button : Button):
+	var tw : Tween = create_tween()
+	tw.tween_property(button, "scale", Vector2(1.1, 1.1), 0.1)
+	
+func _on_button_unhovered(button : Button):
+	var tw : Tween = create_tween()
+	tw.tween_property(button, "scale", Vector2.ONE, 0.1)

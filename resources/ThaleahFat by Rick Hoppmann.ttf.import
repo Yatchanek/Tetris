@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://b7h4fbeevjmta"
-path="res://.godot/imported/Teko-Bold.ttf-a22e9e386d8e260775e0784956f4aa6e.fontdata"
+uid="uid://dehl70tcn3ela"
+path="res://.godot/imported/ThaleahFat by Rick Hoppmann.ttf-7934477b4330594e8febd12ff31a7587.fontdata"
 
 [deps]
 
-source_file="res://resources/Teko-Bold.ttf"
-dest_files=["res://.godot/imported/Teko-Bold.ttf-a22e9e386d8e260775e0784956f4aa6e.fontdata"]
+source_file="res://resources/ThaleahFat by Rick Hoppmann.ttf"
+dest_files=["res://.godot/imported/ThaleahFat by Rick Hoppmann.ttf-7934477b4330594e8febd12ff31a7587.fontdata"]
 
 [params]
 

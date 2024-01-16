@@ -1,57 +1,222 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5lcw00b088kv"]
+[gd_scene load_steps=28 format=3 uid="uid://b5lcw00b088kv"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_bnuca"]
 [ext_resource type="Script" path="res://scripts/bag_generator.gd" id="2_mn80y"]
+[ext_resource type="Script" path="res://scripts/board_and_containers.gd" id="3_6hduy"]
 [ext_resource type="Script" path="res://scripts/board_area.gd" id="3_7mhnm"]
 [ext_resource type="Texture2D" uid="uid://cdyxp3nii5xj1" path="res://resources/border.png" id="4_n1slg"]
-[ext_resource type="FontFile" uid="uid://b7h4fbeevjmta" path="res://resources/Teko-Bold.ttf" id="4_ucfe5"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="5_b7ban"]
+[ext_resource type="FontFile" uid="uid://dehl70tcn3ela" path="res://resources/ThaleahFat by Rick Hoppmann.ttf" id="6_f1k84"]
+[ext_resource type="Texture2D" uid="uid://xwwj1nq7ewkd" path="res://resources/next_piece_slot.png" id="6_k4il8"]
+[ext_resource type="Texture2D" uid="uid://nxjwfu0lrvw4" path="res://resources/slot.png" id="7_fjbt7"]
+[ext_resource type="Texture2D" uid="uid://bjenw815kwhc7" path="res://resources/rotate_clockwise.png" id="7_y4h2m"]
+[ext_resource type="Texture2D" uid="uid://p4j2aon4epn4" path="res://resources/rotate_anticlockwise.png" id="8_c4dub"]
+[ext_resource type="Texture2D" uid="uid://cdlchcb4cy53y" path="res://resources/arrowLeft.png" id="9_tuyr0"]
+[ext_resource type="Texture2D" uid="uid://cxy0icqme7a5t" path="res://resources/arrowRight.png" id="10_kln26"]
+[ext_resource type="Texture2D" uid="uid://cuq8g7smksyxw" path="res://resources/arrowDown.png" id="11_sah0m"]
+[ext_resource type="Texture2D" uid="uid://x3yy1kvh3hiu" path="res://resources/drop.png" id="12_ilvqi"]
+[ext_resource type="Texture2D" uid="uid://dr5q54f4tivgp" path="res://resources/hold.png" id="13_cejdw"]
+[ext_resource type="Texture2D" uid="uid://dsifrxuglxp4d" path="res://resources/release.png" id="14_1le2p"]
+[ext_resource type="Texture2D" uid="uid://k43udt40o5wa" path="res://resources/home.png" id="15_lts41"]
+[ext_resource type="Texture2D" uid="uid://dp5vw2tmryk6n" path="res://resources/pause.png" id="16_vnol4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssklp"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.878431, 0.878431, 0.878431, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_hmmun"]
 line_spacing = 0.0
-font = ExtResource("4_ucfe5")
-font_size = 32
+font = ExtResource("6_f1k84")
+font_size = 44
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jxwc4"]
+font = ExtResource("6_f1k84")
+
+[sub_resource type="LabelSettings" id="LabelSettings_lsmf5"]
+line_spacing = 0.0
+font = ExtResource("6_f1k84")
+font_size = 50
+outline_size = 3
+outline_color = Color(0.701961, 0.0588235, 0.0823529, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jcx2h"]
+line_spacing = 0.0
+font = ExtResource("6_f1k84")
+font_size = 50
+outline_size = 3
+outline_color = Color(0.701961, 0.0588235, 0.0823529, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5i41x"]
+size = Vector2(80, 80)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xx1fu"]
+font = ExtResource("6_f1k84")
+font_size = 192
+outline_size = 30
+outline_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_u8ytj"]
+font = ExtResource("6_f1k84")
+font_size = 260
+outline_size = 30
+outline_color = Color(1, 0, 0, 1)
 
 [node name="Game" type="Node"]
+process_mode = 3
 script = ExtResource("1_bnuca")
 
 [node name="BagGenerator" type="Node" parent="."]
 script = ExtResource("2_mn80y")
 
-[node name="BoardArea" type="Node2D" parent="."]
-z_index = 5
-position = Vector2(470, 64)
+[node name="BoardAndContainers" type="CanvasLayer" parent="."]
+layer = 0
+script = ExtResource("3_6hduy")
+
+[node name="BoardArea" type="Node2D" parent="BoardAndContainers"]
+process_mode = 1
+z_index = 1
+z_as_relative = false
+position = Vector2(470, 0)
 script = ExtResource("3_7mhnm")
 
-[node name="Border" type="TextureRect" parent="BoardArea"]
-z_index = 2
-offset_left = -10.0
-offset_top = -130.0
-offset_right = 346.0
-offset_bottom = 650.0
+[node name="PanelContainer" type="PanelContainer" parent="BoardAndContainers"]
+offset_left = 835.0
+offset_top = 55.0
+offset_right = 1256.0
+offset_bottom = 314.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ssklp")
+
+[node name="MarginContainer" type="MarginContainer" parent="BoardAndContainers/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BoardAndContainers/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BoardAndContainers/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="NextLabel" type="Label" parent="BoardAndContainers/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "Next:"
+label_settings = SubResource("LabelSettings_hmmun")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="BoardAndContainers/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HeldLabel" type="Label" parent="BoardAndContainers/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(164, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Held:"
+label_settings = SubResource("LabelSettings_hmmun")
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="BoardAndContainers/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 43
+
+[node name="NextPieceContainer" type="TextureRect" parent="BoardAndContainers/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(164, 164)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("6_k4il8")
+
+[node name="HeldPiecesContainer" type="GridContainer" parent="BoardAndContainers/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+z_as_relative = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+columns = 2
+
+[node name="TextureRect" type="TextureRect" parent="BoardAndContainers/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HeldPiecesContainer"]
+layout_mode = 2
+texture = ExtResource("7_fjbt7")
+
+[node name="Label" type="Label" parent="BoardAndContainers/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HeldPiecesContainer/TextureRect"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 14.0
+offset_bottom = 15.0
+text = "1"
+label_settings = SubResource("LabelSettings_jxwc4")
+horizontal_alignment = 2
+
+[node name="TextureRect2" type="TextureRect" parent="BoardAndContainers/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HeldPiecesContainer"]
+layout_mode = 2
+texture = ExtResource("7_fjbt7")
+
+[node name="Label" type="Label" parent="BoardAndContainers/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HeldPiecesContainer/TextureRect2"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 14.0
+offset_bottom = 15.0
+text = "2"
+label_settings = SubResource("LabelSettings_jxwc4")
+horizontal_alignment = 2
+
+[node name="TextureRect3" type="TextureRect" parent="BoardAndContainers/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HeldPiecesContainer"]
+layout_mode = 2
+texture = ExtResource("7_fjbt7")
+
+[node name="Label" type="Label" parent="BoardAndContainers/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HeldPiecesContainer/TextureRect3"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 14.0
+offset_bottom = 15.0
+text = "3	"
+label_settings = SubResource("LabelSettings_jxwc4")
+horizontal_alignment = 2
+
+[node name="TextureRect4" type="TextureRect" parent="BoardAndContainers/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HeldPiecesContainer"]
+layout_mode = 2
+texture = ExtResource("7_fjbt7")
+
+[node name="Label" type="Label" parent="BoardAndContainers/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HeldPiecesContainer/TextureRect4"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 14.0
+offset_bottom = 15.0
+text = "4"
+label_settings = SubResource("LabelSettings_jxwc4")
+horizontal_alignment = 2
+
+[node name="Border" type="TextureRect" parent="BoardAndContainers"]
+z_index = 4
+offset_left = 460.0
+offset_top = 4.0
+offset_right = 800.0
+offset_bottom = 714.0
 texture = ExtResource("4_n1slg")
 stretch_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="BoardArea/Border"]
+[node name="ColorRect" type="ColorRect" parent="BoardAndContainers"]
 z_index = -2
 z_as_relative = false
 custom_minimum_size = Vector2(320, 640)
-offset_left = 10.0
-offset_top = 130.0
-offset_right = 330.0
-offset_bottom = 770.0
+offset_left = 470.0
+offset_top = 14.0
+offset_right = 790.0
+offset_bottom = 654.0
 color = Color(0.054902, 0.054902, 0.054902, 1)
-
-[node name="Background" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="ColorRect" type="ColorRect" parent="Background"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
 
 [node name="Hud" type="CanvasLayer" parent="."]
 script = ExtResource("5_b7ban")
@@ -68,33 +233,198 @@ layout_mode = 2
 [node name="LinesLabel" type="Label" parent="Hud/MarginContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
-text = "Lines cleared : "
-label_settings = SubResource("LabelSettings_hmmun")
+text = "Lines:"
+label_settings = SubResource("LabelSettings_lsmf5")
+
+[node name="HighScoreLabel" type="Label" parent="Hud/MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "High score:"
+label_settings = SubResource("LabelSettings_jcx2h")
 
 [node name="ScoreLabel" type="Label" parent="Hud/MarginContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 text = "Score:"
-label_settings = SubResource("LabelSettings_hmmun")
+label_settings = SubResource("LabelSettings_jcx2h")
 
-[node name="NextLabel" type="Label" parent="Hud"]
-texture_filter = 1
-offset_left = 488.0
-offset_top = 100.0
-offset_right = 552.0
-offset_bottom = 147.0
-size_flags_horizontal = 4
-text = "Next:"
-label_settings = SubResource("LabelSettings_hmmun")
+[node name="TouchControls" type="Node2D" parent="Hud"]
+position = Vector2(0, 450)
 
-[node name="HeldLabel" type="Label" parent="Hud"]
-texture_filter = 1
-offset_left = 488.0
-offset_top = 100.0
-offset_right = 552.0
-offset_bottom = 147.0
-size_flags_horizontal = 4
-text = "Held:"
-label_settings = SubResource("LabelSettings_hmmun")
+[node name="RotateRight" type="TouchScreenButton" parent="Hud/TouchControls"]
+position = Vector2(150, 0)
+texture_normal = ExtResource("7_y4h2m")
+texture_pressed = ExtResource("7_y4h2m")
+shape = SubResource("RectangleShape2D_5i41x")
+action = "rotate_right"
+visibility_mode = 1
 
-[connection signal="setup_ready" from="BoardArea" to="Hud" method="setup_labels_position"]
+[node name="RotateLeft" type="TouchScreenButton" parent="Hud/TouchControls"]
+position = Vector2(25, 0)
+texture_normal = ExtResource("8_c4dub")
+texture_pressed = ExtResource("7_y4h2m")
+shape = SubResource("RectangleShape2D_5i41x")
+action = "rotate_left"
+visibility_mode = 1
+
+[node name="MoveLeft" type="TouchScreenButton" parent="Hud/TouchControls"]
+position = Vector2(25, 125)
+texture_normal = ExtResource("9_tuyr0")
+texture_pressed = ExtResource("9_tuyr0")
+shape = SubResource("RectangleShape2D_5i41x")
+action = "move_left"
+visibility_mode = 1
+
+[node name="MoveRight" type="TouchScreenButton" parent="Hud/TouchControls"]
+position = Vector2(150, 125)
+texture_normal = ExtResource("10_kln26")
+texture_pressed = ExtResource("10_kln26")
+shape = SubResource("RectangleShape2D_5i41x")
+action = "move_right"
+visibility_mode = 1
+
+[node name="SoftDrop" type="TouchScreenButton" parent="Hud/TouchControls"]
+position = Vector2(1155, 0)
+texture_normal = ExtResource("11_sah0m")
+texture_pressed = ExtResource("11_sah0m")
+shape = SubResource("RectangleShape2D_5i41x")
+action = "soft_drop"
+visibility_mode = 1
+
+[node name="HardDrop" type="TouchScreenButton" parent="Hud/TouchControls"]
+position = Vector2(1030, 0)
+texture_normal = ExtResource("12_ilvqi")
+texture_pressed = ExtResource("12_ilvqi")
+shape = SubResource("RectangleShape2D_5i41x")
+action = "hard_drop"
+visibility_mode = 1
+
+[node name="Hold" type="TouchScreenButton" parent="Hud/TouchControls"]
+position = Vector2(1030, 125)
+texture_normal = ExtResource("13_cejdw")
+texture_pressed = ExtResource("13_cejdw")
+shape = SubResource("RectangleShape2D_5i41x")
+action = "hold"
+visibility_mode = 1
+
+[node name="Release" type="TouchScreenButton" parent="Hud/TouchControls"]
+position = Vector2(1155, 125)
+texture_normal = ExtResource("14_1le2p")
+texture_pressed = ExtResource("14_1le2p")
+shape = SubResource("RectangleShape2D_5i41x")
+action = "release"
+visibility_mode = 1
+
+[node name="Quit" type="TouchScreenButton" parent="Hud/TouchControls"]
+position = Vector2(25, -250)
+texture_normal = ExtResource("15_lts41")
+texture_pressed = ExtResource("15_lts41")
+shape = SubResource("RectangleShape2D_5i41x")
+action = "quit"
+visibility_mode = 1
+
+[node name="Pause" type="TouchScreenButton" parent="Hud/TouchControls"]
+position = Vector2(150, -250)
+texture_normal = ExtResource("16_vnol4")
+texture_pressed = ExtResource("16_vnol4")
+shape = SubResource("RectangleShape2D_5i41x")
+action = "pause"
+visibility_mode = 1
+
+[node name="PausedLabel" type="Label" parent="Hud"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -291.5
+offset_top = -88.0
+offset_right = 291.5
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_xx1fu")
+
+[node name="Game" type="HBoxContainer" parent="Hud"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -137.0
+offset_right = -100.0
+offset_bottom = 138.0
+grow_vertical = 2
+alignment = 2
+
+[node name="G" type="Label" parent="Hud/Game"]
+layout_mode = 2
+text = "G"
+label_settings = SubResource("LabelSettings_u8ytj")
+
+[node name="A" type="Label" parent="Hud/Game"]
+layout_mode = 2
+text = "A"
+label_settings = SubResource("LabelSettings_u8ytj")
+
+[node name="M" type="Label" parent="Hud/Game"]
+layout_mode = 2
+text = "M"
+label_settings = SubResource("LabelSettings_u8ytj")
+
+[node name="E" type="Label" parent="Hud/Game"]
+layout_mode = 2
+text = "E	"
+label_settings = SubResource("LabelSettings_u8ytj")
+
+[node name="Over" type="HBoxContainer" parent="Hud"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -137.5
+offset_right = 700.0
+offset_bottom = 137.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="O" type="Label" parent="Hud/Over"]
+layout_mode = 2
+text = "O"
+label_settings = SubResource("LabelSettings_u8ytj")
+
+[node name="V" type="Label" parent="Hud/Over"]
+layout_mode = 2
+text = "V"
+label_settings = SubResource("LabelSettings_u8ytj")
+
+[node name="E" type="Label" parent="Hud/Over"]
+layout_mode = 2
+text = "E"
+label_settings = SubResource("LabelSettings_u8ytj")
+
+[node name="R" type="Label" parent="Hud/Over"]
+layout_mode = 2
+text = "R"
+label_settings = SubResource("LabelSettings_u8ytj")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="GameOverTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="scramble" from="BoardAndContainers/BoardArea" to="." method="scramble_random_row"]
+[connection signal="setup_ready" from="BoardAndContainers/BoardArea" to="BoardAndContainers" method="_on_board_area_setup_ready"]
+[connection signal="timeout" from="GameOverTimer" to="." method="return_to_menu"]

@@ -43,54 +43,35 @@ var key_held : bool = false
 var ar_active : bool = false
 var countdown_to_lock : bool = false
 
+var was_held : bool = false
 
 var last_height : int
 
 signal piece_locked
 signal board_entered
+signal game_over
 
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("rotate_right"):
-		rotate_self(1)
-	if Input.is_action_just_pressed("rotate_left"):
-		rotate_self(-1)
-	elif Input.is_action_just_pressed("hard_drop"):
-		hard_drop()
 
 func _ready() -> void:
 	set_physics_process(status == ACTIVE)
 	set_process_input(status == ACTIVE)
 	if status == GHOST:
 		z_index = -1
-	elif status == NEXT:
-		position = Vector2(Globals.COLS[Globals.game_mode] * Globals.CELL_SIZE[Globals.game_mode] + 74, 32)
 
 	elif status == ACTIVE:
-		#current_coords = spawn_coords
-		#position = Vector2(current_coords * Globals.CELL_SIZE[Globals.GameMode.TETRIS])
-		#await get_tree().create_timer(0.1).timeout
-		#board_entered.emit(self)
 		enter_board()
 
-func set_status(_status : int, held_pieces_count : int = 0):
+func set_status(_status : int):
 	status = _status
 	if status == HELD:
-		scale = Vector2(0.75, 0.75)
+		was_held = true
 		set_physics_process(false)
 		set_process_input(false)
-		apply_rotation(0)
-		position = Vector2((Globals.COLS[Globals.game_mode] + 4 * held_pieces_count) * Globals.CELL_SIZE[Globals.game_mode] + 74, Globals.ROWS[Globals.game_mode] * Globals.CELL_SIZE[Globals.game_mode] - 100)
-		if self is Pentomino:
-			if [Globals.Pentomino. I, Globals.Pentomino.L, Globals.Pentomino.J, Globals.Pentomino.Y, Globals.Pentomino.Y2, Globals.Pentomino.S, Globals.Pentomino.N,].has(piece_type):
-				position.y -= Globals.CELL_SIZE[Globals.game_mode] * 2
-			elif [Globals.Pentomino.P, Globals.Pentomino.B].has(piece_type):
-				position.y -= Globals.CELL_SIZE[Globals.game_mode] 
-	
+
 	elif status == NEXT:
-		scale = Vector2.ONE
 		set_physics_process(false)
 		set_process_input(false)
-		position = Vector2(Globals.COLS[Globals.game_mode] * Globals.CELL_SIZE[Globals.game_mode] + 74, 32)
+		
 	elif status == ACTIVE:
 		activate()
 
@@ -124,8 +105,15 @@ func _physics_process(delta: float) -> void:
 			countdown_to_lock = false
 
 		tick_elapsed_time = 0
+	
+	if Input.is_action_just_pressed("rotate_right"):
+		rotate_self(1)
+	elif Input.is_action_just_pressed("rotate_left"):
+		rotate_self(-1)
+	elif Input.is_action_just_pressed("hard_drop"):
+		hard_drop()
 			
-	if Input.is_action_pressed("move_left") and can_accept_input:
+	elif Input.is_action_pressed("move_left") and can_accept_input:
 		var moved : bool = move(Vector2i.LEFT)
 		if moved:
 			if !ar_active:
@@ -143,13 +131,12 @@ func _physics_process(delta: float) -> void:
 			countdown_to_lock = true
 			lock_elapsed_time = 0
 
-	if Input.is_action_just_released("move_left") or Input.is_action_just_released("move_right"):
+	elif Input.is_action_just_released("move_left") or Input.is_action_just_released("move_right"):
 		key_held = false
 		ar_active = false
 		can_accept_input = true
 		ARR_framecount = 0
 		DAS_framecount = 0
-
 
 func position_blocks():
 	for i in tile_data.size():
@@ -170,8 +157,7 @@ func enter_board():
 		set_process_input(false)
 		if is_instance_valid(ghost_piece):
 			ghost_piece.queue_free()
-		await get_tree().create_timer(2.0).timeout
-		SceneChanger.change_scene("res://scenes/title_screen.tscn")
+		Globals.game_over.emit()
 	elif is_instance_valid(ghost_piece):
 		ghost_piece.hard_drop()
 
